@@ -33,10 +33,5 @@ document.getElementById('root').innerHTML = `
         ACESSAR CALCULADORAS COMPLETAS
       </button>
     </main>
-
-    <footer style="margin-top: 50px; color: #555; font-size: 0.8rem;">
-      <p>© 2026 Portal do Corredor - Todos os direitos reservados.</p>
-      <p>Hospedado via GitHub Pages - Custo de Hospedagem: R$ 0,00</p>
-    </footer>
   </div>
 `;
