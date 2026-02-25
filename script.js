@@ -1,11 +1,11 @@
 /* ============================================================
-   PORTAL BIOTOOLS PREMIUM — PERFORMANCE CIENTÍFICA
+   PORTAL BIOTOOLS PREMIUM — DESIGN CYBER PERFORMANCE
    Idealizado por Juarez Bruschi Junior
    ============================================================ */
 
 const app = document.getElementById('root');
 
-// --- MOTOR DE CÁLCULO ---
+// MOTOR DE CÁLCULO PROFISSIONAL
 const formatTime = (s) => {
     const h = Math.floor(s / 3600);
     const m = Math.floor((s % 3600) / 60);
@@ -14,92 +14,63 @@ const formatTime = (s) => {
 };
 
 window.calcularTudo = () => {
-    // Lógica Pace
-    const dP = parseFloat(document.getElementById('distPace').value);
-    const mP = parseInt(document.getElementById('mPace').value || 0);
-    const sP = parseInt(document.getElementById('sPace').value || 0);
-    if (dP > 0 && (mP + sP) > 0) {
-        const paceSecs = ((mP * 60) + sP) / dP;
-        document.getElementById('resPace').innerHTML = `<small>PACE:</small> ${Math.floor(paceSecs / 60)}:${String(Math.round(paceSecs % 60)).padStart(2, '0')} <small>min/km</small>`;
-    }
-
-    // Lógica Tiros
     const tMin = parseInt(document.getElementById('pMin').value || 4);
     const tSec = parseInt(document.getElementById('pSec').value || 30);
     const ref = (tMin * 60) + tSec;
-    const mults = { vo2: 0.92, limiar: 0.95, vel: 0.88 };
     const obj = document.getElementById('objTiro').value;
+    const mults = { vo2: 0.92, limiar: 0.95, vel: 0.88 };
     const target = ref * mults[obj];
     
-    let html = '<div style="margin-top:20px; display:grid; gap:10px">';
+    let html = '<div style="margin-top:25px; display:grid; gap:12px">';
     [200, 400, 800, 1000].forEach(d => {
-        html += `<div style="display:flex; justify-content:space-between; padding:12px; background:#111; border-radius:6px; border-left:3px solid #ffcc00">
-                    <span style="color:#666">${d}m</span>
-                    <b style="color:#ffcc00">${formatTime(target * (d/1000))}</b>
+        html += `<div style="display:flex; justify-content:space-between; padding:15px; background:#111; border-radius:10px; border-right:4px solid #ffcc00; box-shadow: 0 4px 15px rgba(0,0,0,0.3)">
+                    <span style="color:#888; font-weight:bold; letter-spacing:1px">${d} METROS</span>
+                    <b style="color:#ffcc00; font-size:1.2rem">${formatTime(target * (d/1000))}</b>
                  </div>`;
     });
     html += '</div>';
     document.getElementById('resTiros').innerHTML = html;
 };
 
-// --- ESTRUTURA VISUAL (DESIGN DE ALTA PERFORMANCE) ---
+// ESTRUTURA VISUAL IMPACTANTE
 app.innerHTML = `
-<div style="font-family:'Inter', sans-serif; color:white; background:#000; min-height:100vh;">
-    
-    <nav style="padding:20px; text-align:center; border-bottom:1px solid #111; background:rgba(0,0,0,0.9); position:sticky; top:0; z-index:10">
-        <span style="letter-spacing:5px; font-weight:900; color:#ffcc00; font-size:1.2rem">BIOTOOLS PREMIUM</span>
+<div style="font-family:'Inter', sans-serif; color:white; background:#000; min-height:100vh; line-height:1.6">
+    <nav style="padding:25px; text-align:center; background:#000; border-bottom:1px solid #222; position:sticky; top:0; z-index:100">
+        <span style="letter-spacing:8px; font-weight:900; color:#ffcc00; font-size:1.3rem">BIOTOOLS PREMIUM</span>
     </nav>
 
-    <header style="padding:100px 20px; text-align:center; background: radial-gradient(circle at center, #111 0%, #000 100%);">
-        <h1 style="font-family:'Barlow Condensed'; font-size:5rem; margin:0; line-height:0.9; text-transform:uppercase">Portal do<br><span style="color:#ffcc00">Corredor</span></h1>
-        <p style="margin-top:20px; color:#666; font-size:1.2rem; letter-spacing:1px">Sistemas de Treinamento por <b>Juarez Bruschi Junior</b></p>
+    <header style="padding:120px 20px; text-align:center; background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); border-bottom:1px solid #111">
+        <h1 style="font-family:'Barlow Condensed'; font-size:6rem; margin:0; line-height:0.8; text-transform:uppercase; filter: drop-shadow(0 0 10px rgba(255,204,0,0.3))">PORTAL DO<br><span style="color:#ffcc00">CORREDOR</span></h1>
+        <p style="margin-top:30px; color:#555; font-size:1.3rem; letter-spacing:3px; text-transform:uppercase">Ciência por <b>Juarez Bruschi Junior</b></p>
     </header>
 
-    <main style="max-width:1200px; margin:0 auto; padding:0 20px 100px;">
-        
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap:30px">
+    <main style="max-width:1100px; margin:-50px auto 100px; padding:0 20px;">
+        <div style="background:#0a0a0a; border:1px solid #222; padding:50px; border-radius:30px; box-shadow:0 30px 60px rgba(0,0,0,0.8)">
+            <h2 style="font-family:'Barlow Condensed'; font-size:2.5rem; color:#ffcc00; text-align:center; margin-bottom:40px">LABORATÓRIO DE PERFORMANCE</h2>
             
-            <div style="background:#080808; border:1px solid #151515; padding:40px; border-radius:24px; position:relative; overflow:hidden">
-                <div style="position:absolute; top:0; right:0; padding:10px; color:#111; font-weight:900; font-size:4rem; line-height:1">01</div>
-                <h2 style="font-family:'Barlow Condensed'; font-size:2rem; color:#ffcc00; position:relative">ANÁLISE DE RITMO</h2>
-                <div style="margin-top:30px">
-                    <label style="font-size:10px; color:#444; letter-spacing:2px; display:block; margin-bottom:5px">DISTÂNCIA DA PROVA (KM)</label>
-                    <input id="distPace" type="number" value="10" style="width:100%; background:#000; border:1px solid #222; color:white; padding:15px; border-radius:8px; margin-bottom:20px">
-                    
-                    <label style="font-size:10px; color:#444; letter-spacing:2px; display:block; margin-bottom:5px">TEMPO ALVO (MIN:SEG)</label>
-                    <div style="display:flex; gap:10px">
-                        <input id="mPace" value="50" type="number" style="width:50%; background:#000; border:1px solid #222; color:white; padding:15px; border-radius:8px">
-                        <input id="sPace" value="0" type="number" style="width:50%; background:#000; border:1px solid #222; color:white; padding:15px; border-radius:8px">
-                    </div>
+            <div style="max-width:600px; margin:0 auto">
+                <label style="font-size:11px; color:#444; letter-spacing:3px; display:block; margin-bottom:10px; text-transform:uppercase">Pace de Referência (Min:Seg)</label>
+                <div style="display:flex; gap:15px; margin-bottom:25px">
+                    <input id="pMin" value="4" type="number" style="width:50%; background:#000; border:2px solid #222; color:white; padding:20px; border-radius:12px; font-size:1.5rem; text-align:center">
+                    <input id="pSec" value="30" type="number" style="width:50%; background:#000; border:2px solid #222; color:white; padding:20px; border-radius:12px; font-size:1.5rem; text-align:center">
                 </div>
-                <button onclick="calcularTudo()" style="width:100%; background:#ffcc00; border:none; padding:20px; margin-top:30px; font-weight:900; cursor:pointer; border-radius:8px; transition:0.3s">CALCULAR PACE</button>
-                <div id="resPace" style="margin-top:30px; font-size:2.5rem; font-family:'Barlow Condensed'; text-align:center; color:#ffcc00"></div>
+
+                <label style="font-size:11px; color:#444; letter-spacing:3px; display:block; margin-bottom:10px; text-transform:uppercase">Objetivo do Estímulo</label>
+                <select id="objTiro" style="width:100%; background:#000; border:2px solid #222; color:white; padding:20px; border-radius:12px; font-size:1.1rem; margin-bottom:30px; appearance:none">
+                    <option value="vo2">VO2 MÁXIMO (ALTA INTENSIDADE)</option>
+                    <option value="limiar">LIMIAR DE LACTATO (RESISTÊNCIA)</option>
+                    <option value="vel">SPRINTS (POTÊNCIA PURA)</option>
+                </select>
+
+                <button onclick="calcularTudo()" style="width:100%; background:#ffcc00; color:#000; border:none; padding:25px; font-weight:900; cursor:pointer; border-radius:12px; font-size:1.2rem; text-transform:uppercase; letter-spacing:2px; transition:0.3s">GERAR PLANILHA AGORA</button>
             </div>
 
-            <div style="background:#080808; border:1px solid #151515; padding:40px; border-radius:24px; position:relative; overflow:hidden">
-                <div style="position:absolute; top:0; right:0; padding:10px; color:#111; font-weight:900; font-size:4rem; line-height:1">02</div>
-                <h2 style="font-family:'Barlow Condensed'; font-size:2rem; color:#ffcc00; position:relative">TIROS CIENTÍFICOS</h2>
-                <div style="margin-top:30px">
-                    <label style="font-size:10px; color:#444; letter-spacing:2px; display:block; margin-bottom:5px">PACE DE REFERÊNCIA</label>
-                    <div style="display:flex; gap:10px">
-                        <input id="pMin" value="4" type="number" style="width:50%; background:#000; border:1px solid #222; color:white; padding:15px; border-radius:8px">
-                        <input id="pSec" value="30" type="number" style="width:50%; background:#000; border:1px solid #222; color:white; padding:15px; border-radius:8px">
-                    </div>
-                    
-                    <label style="font-size:10px; color:#444; letter-spacing:2px; display:block; margin-bottom:5px; margin-top:20px">OBJETIVO FISIOLÓGICO</label>
-                    <select id="objTiro" style="width:100%; background:#000; border:1px solid #222; color:white; padding:15px; border-radius:8px">
-                        <option value="vo2">VO2 MÁX (STIMULUS)</option>
-                        <option value="limiar">THRESHOLD (LIMIAR)</option>
-                        <option value="vel">SPRINT (VELOCIDADE)</option>
-                    </select>
-                </div>
-                <button onclick="calcularTudo()" style="width:100%; background:#fff; color:#000; border:none; padding:20px; margin-top:30px; font-weight:900; cursor:pointer; border-radius:8px">GERAR TIROS</button>
-                <div id="resTiros"></div>
-            </div>
-
+            <div id="resTiros" style="margin-top:40px"></div>
         </div>
+    </main>
 
-        <section style="margin-top:100px; display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:50px">
-            <div>
-                <h3 style="color:#ffcc00; font-family:'Barlow Condensed'; font-size:1.5rem">METODOLOGIA</h3>
-                <p style="color:#444; line-height:1.6; font-size:0.9rem">Algoritmos baseados
+    <footer style="padding:100px 20px; text-align:center; background:#050505; color:#222; font-size:0.8rem; letter-spacing:4px; text-transform:uppercase">
+        © 2026 BIOTOOLSPREMIUM.COM.BR | JUAREZ BRUSCHI JUNIOR
+    </footer>
+</div>
+`;
